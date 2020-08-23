@@ -9,7 +9,7 @@
 	<x-card-medium>
 		<x-title>Profil {{ $user->name }}</x-title>
 		<div class="form-row">
-			<div class="col-12 col-md-3">
+			<div class="col-12 col-md-2">
 				<x-avatar :url="$user->avatar()"/>
 
 				@auth
@@ -20,12 +20,9 @@
 					@endif
 				@endauth
 			</div>
-			<div class="col-12 col-md-9">
+			<div class="col-12 col-md-10">
 				<hr class="d-md-none">
-				<h3 class="h5">{{ $user->name }}</h3>
-				<div>
-					Bergabung sejak {{ $user->created_at->diffForHumans() }}<br>
-				</div>
+				<h2 class="h5">{{ $user->name }}</h2>
 
 				@auth
 					@if ($user->id == Auth::user()->id)
@@ -35,6 +32,14 @@
 					@endif
 				@endauth
 			</div>
+		</div>
+		<hr>
+		<div>
+			@if (!empty($user->about))
+				<p>
+					{{ $user->about }}
+				</p>
+			@endif
 		</div>
 	</x-card-medium>
 @endsection

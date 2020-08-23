@@ -51,8 +51,13 @@ class ProfileController extends Controller
 		$old_email = $user->email;
 
 		$data = $request->validate([
-			'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
-			'email' => ['required', 'email', Rule::unique('users')->ignore($user)]
+			'name' 			=> ['required', 'regex:/^[a-zA-Z\s]+$/'],
+			'email' 		=> ['required', 'email', Rule::unique('users')->ignore($user)],
+			'about' 		=> ['nullable', 'max:256'],
+			'facebook' 		=> ['nullable', 'max:128'],
+			'twitter' 		=> ['nullable', 'max:128'],
+			'instagram' 	=> ['nullable', 'max:128'],
+			'youtube' 		=> ['nullable', 'max:128']
 		]);
 
 		$user->update($data);
