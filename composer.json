@@ -1,0 +1,29 @@
+{
+    "name": "harishariyanto/origin",
+    "description": "Origin",
+    "authors": [
+        {
+            "name": "Haris Hariyanto",
+            "email": "harishariyanto299@gmail.com"
+        }
+    ],
+    "require": {
+    	"kosinix/grafika": "dev-master",
+    	"yajra/laravel-datatables-oracle": "~9.0"
+    },
+    "extra": {
+    	"laravel": {
+    		"providers": [
+    			"Harishariyanto\\Origin\\OriginServiceProvider"
+    		]
+    	}
+    },
+    "autoload": {
+    	"psr-4": {
+    		"Harishariyanto\\Origin\\": "src"
+    	},
+    	"files": [
+    		"src/Helpers/settings.php"
+    	]
+    }
+}

@@ -1,0 +1,14 @@
+@extends('layouts.app')
+
+@section('page_title', 'Buat {{display_name}}')
+
+@section('content')
+	<x-breadcrumb :links="$breadcrumb" size="lg"/>
+	<x-card-large>
+		<x-title>Buat {{display_name}}</x-title>
+
+		<form action="{{ route('{{name_snake_plural}}.store') }}" method="POST" enctype="multipart/form-data">
+			@include('apps.{{name_snake_plural}}.partials.form', ['{{name_snake}}' => ''])
+		</form>
+	</x-card-large>
+@endsection

@@ -1,0 +1,109 @@
+<?php
+
+namespace App\Http\Controllers\Apps;
+
+use App\{{name}};
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Grafika\Grafika;
+use Illuminate\Support\Facades\Storage;
+
+class {{name}}Controller extends Controller
+{
+	public function __construct()
+	{
+		$this->middleware(['auth']);
+	}
+
+    public function index()
+    {
+    	$this->authorize('access', '{{name_snake_plural}}.index');
+
+        $breadcrumb = [
+        	'{{display_name}}' => ''
+        ];
+
+        ${{name_snake_plural}} = {{name}}::get();
+
+        return view('apps.{{name_snake_plural}}.index', compact('breadcrumb', '{{name_snake_plural}}'));
+    }
+
+    public function create()
+    {
+    	$this->authorize('access', '{{name_snake_plural}}.create');
+
+        $breadcrumb = [
+        	'{{display_name}}' => route('{{name_snake_plural}}.index'),
+        	'Tambah {{display_name}}' => ''
+        ];
+
+        return view('apps.{{name_snake_plural}}.create', compact('breadcrumb'));
+    }
+
+    public function store(Request $request)
+    {
+    	$this->authorize('access', '{{name_snake_plural}}.create');
+
+        $data = $request->validate([
+        	{{validation}}
+        ]);
+
+        {{file_uploader}}
+
+        {{name}}::create($data);
+
+        return redirect()->route('{{name_snake_plural}}.index')->with('success', 'Berhasil ditambahkan');
+    }
+
+    public function show({{name}} ${{name_snake}})
+    {
+    	$this->authorize('access', '{{name_snake_plural}}.show');
+
+        $breadcrumb = [
+        	'{{display_name}}' => route('{{name_snake_plural}}.index'),
+        	'Detail {{display_name}}' => ''
+        ];
+
+        return view('apps.{{name_snake_plural}}.show', compact('breadcrumb', '{{name_snake}}'));
+    }
+
+    public function edit({{name}} ${{name_snake}})
+    {
+    	$this->authorize('access', '{{name_snake_plural}}.edit');
+
+        $breadcrumb = [
+        	'{{display_name}}' => route('{{name_snake_plural}}.index'),
+        	'Edit {{display_name}}' => ''
+        ];
+
+        return view('apps.{{name_snake_plural}}.edit', compact('breadcrumb', '{{name_snake}}'));
+    }
+
+    public function update(Request $request, {{name}} ${{name_snake}})
+    {
+    	$this->authorize('access', '{{name_snake_plural}}.edit');
+
+        $data = $request->validate([
+        	{{validation}}
+        ]);
+
+        {{file_remover}}
+
+        {{file_uploader}}
+
+        ${{name_snake}}->update($data);
+
+        return redirect()->route('{{name_snake_plural}}.index')->with('success', 'Berhasil diedit');
+    }
+
+    public function destroy(Request $request, {{name}} ${{name_snake}})
+    {
+    	$this->authorize('access', '{{name_snake_plural}}.destroy');
+
+        ${{name_snake}}->delete();
+
+        {{file_remover}}
+
+        return redirect()->route('{{name_snake_plural}}.index')->with('success', 'Berhasil dihapus');
+    }
+}
