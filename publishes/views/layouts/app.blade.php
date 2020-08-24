@@ -12,6 +12,9 @@
 		<title>@yield('page_title')</title>
 
 		<style type="text/css">
+			body {
+				padding-top: 56px;
+			}
 			.w-20 {
 				width: 20%;
 			}
