@@ -27,7 +27,7 @@
 		@endif
 
 		<div class="table-responsive p-2">
-			<table class="table table-bordered table-hover" id="usersIndex">
+			<table class="w-100 table table-bordered table-hover" id="usersIndex">
 				<thead class="thead-light">
 					<tr>
 						<th class="w-50">Nama</th>

@@ -40,7 +40,7 @@ class UserController extends Controller
     {
     	$this->authorize('access', 'users.index');
 
-    	if ($request->ajax() ||  true) {
+    	if ($request->ajax()) {
 	    	return DataTables::of(User::get())
 	    		->only(['name', 'email', 'role', 'action', 'created_at', 'timestamp'])
 	    		->addColumn('role', function (User $user) {

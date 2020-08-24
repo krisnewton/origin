@@ -28,7 +28,7 @@
 
 		@if ($roles)
 			<div class="table-responsive p-2">
-				<table class="table table-bordered table-hover" id="rolesIndex">
+				<table class="w-100 table table-bordered table-hover" id="rolesIndex">
 					<thead class="thead-light">
 						<tr>
 							<th class="w-50">Nama Role</th>
