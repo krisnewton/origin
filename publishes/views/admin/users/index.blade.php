@@ -27,14 +27,14 @@
 		@endif
 
 		<div class="table-responsive p-2">
-			<table class="w-100 table table-bordered table-hover" id="usersIndex">
+			<table class="w-100 table table-sm table-bordered table-hover" id="usersIndex">
 				<thead class="thead-light">
 					<tr>
-						<th class="w-50">Nama</th>
-						<th class="desktop">Email</th>
-						<th class="none">Role</th>
-						<th class="none">Terdaftar</th>
-						<th class="none">Action</th>
+						<th class="w-25">Nama</th>
+						<th class="w-25 desktop">Email</th>
+						<th class="desktop">Role</th>
+						<th class="desktop">Terdaftar</th>
+						<th class="desktop">Action</th>
 						<th>Timestamp</th>
 					</tr>
 				</thead>
@@ -44,14 +44,14 @@
 @endsection
 
 @push('styles')
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
+	<link rel="stylesheet" href="{{ asset('vendor/datatables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/datatables/Responsive-2.2.5/css/responsive.dataTables.min.css') }}">
 @endpush
 
 @push('scripts')
-	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-	<script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
+	<script src="{{ asset('vendor/datatables/DataTables-1.10.21/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('vendor/datatables/DataTables-1.10.21/js/dataTables.bootstrap4.min.js') }}"></script>
+	<script src="{{ asset('vendor/datatables/Responsive-2.2.5/js/dataTables.responsive.min.js') }}"></script>
 	<script>
 		$(document).ready(function () {
 			$("#usersIndex").DataTable({

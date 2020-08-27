@@ -28,7 +28,7 @@
 
 		@if ($roles)
 			<div class="table-responsive p-2">
-				<table class="w-100 table table-bordered table-hover" id="rolesIndex">
+				<table class="w-100 table table-sm table-bordered table-hover" id="rolesIndex">
 					<thead class="thead-light">
 						<tr>
 							<th class="w-50">Nama Role</th>
@@ -84,12 +84,12 @@
 @endsection
 
 @push('styles')
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="{{ asset('vendor/datatables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css') }}">
 @endpush
 
 @push('scripts')
-	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+	<script src="{{ asset('vendor/datatables/DataTables-1.10.21/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('vendor/datatables/DataTables-1.10.21/js/dataTables.bootstrap4.min.js') }}"></script>
 	<script>
 		$(document).ready(function () {
 			$("#rolesIndex").DataTable({

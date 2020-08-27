@@ -246,7 +246,7 @@ class CrudFactory extends Command
     			}
     		} // [END] Foreach
     	}
-    	$output .= '<button class="btn btn-primary">Simpan</button>';
+    	$output .= '<button type="submit" class="btn btn-primary">Simpan</button>';
 
     	file_put_contents($path . '/form.blade.php', $output);
     	// [END] Create Form

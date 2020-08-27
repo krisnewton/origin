@@ -51,3 +51,5 @@ Route::group(['prefix' => 'account', 'as' => 'account.'], function () {
 	Route::get('password', 'User\PasswordController@index')->name('password');
 	Route::put('password', 'User\PasswordController@update');
 });
+
+Route::post('upload-image', 'ImageController@index')->name('upload_image');

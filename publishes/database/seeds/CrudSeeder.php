@@ -14,9 +14,10 @@ class CrudSeeder extends Seeder
     {
     	$config = [
     		// [ Display Name, Form Name, Type, [ Validation ] ],
+            ['Nama', 'name', 'text', ['required']]
     	];
     	DB::table('cruds')->insert([
-    		'name' 		=> 'products',
+    		'name' 		=> 'settings',
     		'config' 	=> json_encode($config)
     	]);
     }
