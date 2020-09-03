@@ -37,6 +37,10 @@ class ImageController extends Controller
     	$editor->save($image, 'storage/images/thumbnails/' . $filename);
 
     	$data['image_thumbnail'] = asset('storage/images/thumbnails/' . $filename);
+
+        $editor->open($image2, 'storage/' . $path);
+        $editor->resizeFill($image2, 300, 300);
+        $editor->save($image2, 'storage/images/squares/' . $filename);
     	// [END] Membuat thumbnail
 
     	Image::create($data);
