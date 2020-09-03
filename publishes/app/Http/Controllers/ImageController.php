@@ -33,7 +33,7 @@ class ImageController extends Controller
     	$editor = Grafika::createEditor();
 
     	$editor->open($image, 'storage/' . $path);
-    	$editor->resizeFill($image, 256, 256);
+    	$editor->resizeFill($image, 288, 162);
     	$editor->save($image, 'storage/images/thumbnails/' . $filename);
 
     	$data['image_thumbnail'] = asset('storage/images/thumbnails/' . $filename);
