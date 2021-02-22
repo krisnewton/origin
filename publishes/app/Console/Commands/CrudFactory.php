@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Crud;
+use App\Access;
+use App\AccessGroup;
 use Illuminate\Support\Facades\DB;
 
 class CrudFactory extends Command
@@ -48,9 +50,10 @@ class CrudFactory extends Command
     	$display_name = $this->argument('display_name');
 
     	// Buat Accesses
-    	$id = DB::table('access_groups')->insertGetId([
+    	$id = AccessGroup::firstOrCreate([
     		'name' => $display_name
     	]);
+		$id = $id->id;
 
     	$accesses = [
     		$name_snake_plural . '.index' 		=> 'Melihat Daftar ' . $display_name,
@@ -61,7 +64,7 @@ class CrudFactory extends Command
     	];
 
     	foreach ($accesses as $access_code => $access_name) {
-    		DB::table('accesses')->insert([
+    		Access::firstOrCreate([
     			'access_group_id' 	=> $id,
     			'name' 				=> $access_name,
     			'code' 				=> $access_code
@@ -144,15 +147,18 @@ class CrudFactory extends Command
 		$table_heads = [];
 		$table_cols = [];
 		$details = [];
+		$first = true;
 		foreach ($configs as $config) {
 			$config_display_name 	= $config[0];
 			$config_form_name 		= $config[1];
 			$config_type 			= $config[2];
 			$config_validation		= $config[3];
 
-			$table_heads[] = '<th>' . $config_display_name . '</th>';
+			$table_heads[] = '<th' . ($first ? '' : ' class="desktop"') . '>' . $config_display_name . '</th>';
 			$table_cols[] = '<td>{{ $' . $name_snake . '->' . $config_form_name . ' }}</td>';
 			$details[] = '<tr><th>' . $config_display_name . '</th><td>{{ $' . $name_snake . '->' . $config_form_name . ' }}</td></tr>';
+
+			$first = false;
 		}
 		$table_heads = implode(' ', $table_heads);
 		$table_cols = implode(' ', $table_cols);

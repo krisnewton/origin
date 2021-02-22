@@ -79,14 +79,18 @@
 
 @push('styles')
 	<link rel="stylesheet" href="{{ asset('vendor/datatables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/datatables/Responsive-2.2.5/css/responsive.dataTables.min.css') }}">
 @endpush
 
 @push('scripts')
 	<script src="{{ asset('vendor/datatables/DataTables-1.10.21/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ asset('vendor/datatables/DataTables-1.10.21/js/dataTables.bootstrap4.min.js') }}"></script>
+	<script src="{{ asset('vendor/datatables/Responsive-2.2.5/js/dataTables.responsive.min.js') }}"></script>
 	<script>
 		$(document).ready(function () {
 			$("#{{name_snake_plural}}_index").DataTable({
+				"responsive" : true,
+				"pagingType" : "simple",
 				"columnDefs" : [
 					{ "targets" : -1, "orderable" : false, "searchable" : false }
 				]
